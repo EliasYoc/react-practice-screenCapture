@@ -1,0 +1,23 @@
+.playbar {
+  background: hsla(217, 100%, 50%, 1);
+
+  background: linear-gradient(
+    90deg,
+    hsla(217, 100%, 50%, 1) 0%,
+    hsla(186, 100%, 69%, 1) 100%
+  );
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+.playbar__btn {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+.playbar__btn:hover {
+  color: #fff;
+  background: hsla(217, 100%, 50%, 1);
+}
