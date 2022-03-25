@@ -6,6 +6,8 @@ function App() {
   const videoRef = useRef();
 
   useEffect(() => {
+    if (!navigator.mediaDevices)
+      return <p>Compartir pantalla no es compatible en celulares</p>;
     console.log(
       "is mp4 supported: ",
       MediaRecorder.isTypeSupported("video/webm; codecs=vp9")
