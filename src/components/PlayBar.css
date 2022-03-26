@@ -9,6 +9,7 @@
   display: flex;
   gap: 1rem;
   padding: 0.5rem;
+  align-self: stretch;
 }
 .playbar__btn {
   border: none;
