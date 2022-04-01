@@ -22,3 +22,10 @@
   color: #fff;
   background: hsla(217, 100%, 50%, 1);
 }
+.playbar__btn:disabled {
+  cursor: auto;
+}
+.playbar__btn:disabled:hover {
+  opacity: 0.2;
+  color: inherit;
+}

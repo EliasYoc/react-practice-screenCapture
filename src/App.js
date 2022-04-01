@@ -1,9 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import PlayBar from "./components/PlayBar";
-
+let mediaRecorder = null;
+let recordedChunks = [];
 function App() {
   const videoRef = useRef();
+  const [isRecording, setIsRecording] = useState(false);
   useEffect(() => {
     console.log(
       "is mp4 supported: ",
@@ -15,12 +17,11 @@ function App() {
     );
   }, []);
 
-  let mediaRecorder = null;
-  let recordedChunks = [];
   const startSharedScreen = () => {
     console.log("start shared...");
     const promScreen = navigator.mediaDevices.getDisplayMedia({
       video: {
+        echoCancellation: true,
         // width: 1080,
         // height: 720,
         //constraints properties👇
@@ -30,6 +31,7 @@ function App() {
     });
     promScreen
       .then((mediaStream) => {
+        setIsRecording(true);
         console.log("mediaStream", mediaStream);
         videoRef.current.srcObject = mediaStream;
         mediaRecorder = new MediaRecorder(mediaStream, {
@@ -46,6 +48,7 @@ function App() {
           } else {
             alert("no hay video");
           }
+          setIsRecording(false);
         };
         mediaRecorder.start();
         // console.log(mediaRecorder.state);
@@ -83,7 +86,11 @@ function App() {
   };
   return (
     <div className="App">
-      <PlayBar start={startSharedScreen} stop={stopSharedScreen} />
+      <PlayBar
+        start={startSharedScreen}
+        stop={stopSharedScreen}
+        isRecording={isRecording}
+      />
       <video autoPlay className="sharedScreen" ref={videoRef}></video>
     </div>
   );
