@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import Reactio from "./pages/React";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Reactio />
   </React.StrictMode>,
   document.getElementById("root")
 );
